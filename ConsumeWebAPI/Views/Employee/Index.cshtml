@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ConsumeWebAPI.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style >
+ body{
+        background-color:beige;
+ }
+ .thead-dark{
+     background-color:grey;
+     text-content:Lightgrey;
+ }
+</style>
+<h1>Employee Details</h1>
+
+<p>
+    <a asp-action="Create" type="button" class="btn btn-Primary">Create New</a>
+</p>
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressLine1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressLine2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressLine1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressLine2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+               <a href="@Url.Action("Edit", new{item.Id, item.FirstName, item.LastName, item.MobileNumber, item.Email, item.AddressLine1, item.AddressLine2, item.City, item.Country, item.PostalCode, item.DateOfJoining})" type="button" class="btn btn-info">Edit</a>
+                   
+                <a asp-action="Delete" asp-route-empId=@item.Id class="btn btn-danger">Delete</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
